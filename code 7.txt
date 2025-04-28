@@ -1,0 +1,25 @@
+class Animal {
+    String name;
+
+    Animal(String name) {
+        this.name = name;
+    }
+
+    void displayInfo() {
+        System.out.println("Animal name: " + name);
+    }
+}
+
+class Dog extends Animal {
+    Dog(String name) {
+        super(name);
+    }
+
+    void show() {
+        super.displayInfo();
+        System.out.println("Dog is a pet animal.");
+    }
+}
+
+public class SuperKeywordExample {
+    public static void main(String[]

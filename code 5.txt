@@ -1,0 +1,21 @@
+class Person {
+    private String name = "Private Name";
+    protected int age = 25;
+
+    private void showName() {
+        System.out.println("Name: " + name);
+    }
+
+    protected void showAge() {
+        System.out.println("Age: " + age);
+    }
+}
+
+class Student extends Person {
+    void display() {
+        System.out.println("Accessing protected age: " + age);
+        showAge();
+    }
+}
+
+public class

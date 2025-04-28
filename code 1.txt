@@ -1,0 +1,43 @@
+public class BasePlusCommissionEmployeeExample {
+    static class CommissionEmployee {
+        private String firstName;
+        private String lastName;
+        private String socialSecurityNumber;
+        private double grossSales;
+        private double commissionRate;
+        public CommissionEmployee(String firstName, String lastName, String ssn, double grossSales, double commissionRate) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.socialSecurityNumber = ssn;
+            this.grossSales = grossSales;
+            this.commissionRate = commissionRate;
+        }
+        public double earnings() {
+            return grossSales * commissionRate;
+        }
+        public String getFirstName() {
+            return firstName;
+        }
+        public String getLastName() {
+            return lastName;
+        }
+    }
+    static class BasePlusCommissionEmployee {
+        private CommissionEmployee commissionEmployee;
+        private double baseSalary;
+        public BasePlusCommissionEmployee(CommissionEmployee commissionEmployee, double baseSalary) {
+            this.commissionEmployee = commissionEmployee;
+            this.baseSalary = baseSalary;
+        }
+        public double earnings() {
+            return baseSalary + commissionEmployee.earnings();  
+        }
+    }
+    public static void main(String[] args) {
+        CommissionEmployee ce = new CommissionEmployee("Ammar", "Ali", "123-45-6789", 5000, 0.1);
+        BasePlusCommissionEmployee bpce = new BasePlusCommissionEmployee(ce, 1000);
+
+        System.out.println("Employee: " + ce.getFirstName() + " " + ce.getLastName());
+        System.out.println("Total Earnings: $" + bpce.earnings());
+    }
+}

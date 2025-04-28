@@ -1,0 +1,61 @@
+class Employee {
+    String firstName, lastName;
+
+    Employee(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    void display() {
+        System.out.println("Employee: " + firstName + " " + lastName);
+    }
+}
+
+class CommissionEmployee extends Employee {
+    double sales, commissionRate;
+
+    CommissionEmployee(String firstName, String lastName, double sales, double commissionRate) {
+        super(firstName, lastName);
+        this.sales = sales;
+        this.commissionRate = commissionRate;
+    }
+
+    double earnings() {
+        return sales * commissionRate;
+    }
+
+    void display() {
+        super.display();
+        System.out.println("Commission Earnings: $" + earnings());
+    }
+}
+
+class BasePlusCommissionEmployee extends CommissionEmployee {
+    double baseSalary;
+
+    BasePlusCommissionEmployee(String firstName, String lastName, double sales, double commissionRate, double baseSalary) {
+        super(firstName, lastName, sales, commissionRate);
+        this.baseSalary = baseSalary;
+    }
+
+    double earnings() {
+        return baseSalary + super.earnings();
+    }
+
+    void display() {
+        super.display();
+        System.out.println("Total Earnings with Base Salary: $" + earnings());
+    }
+}
+
+public class EmployeeTest {
+    public static void main(String[] args) {
+        CommissionEmployee ce = new CommissionEmployee("John", "Doe", 5000, 0.10);
+        ce.display();
+
+        System.out.println();
+
+        BasePlusCommissionEmployee bpce = new BasePlusCommissionEmployee("Jane", "Smith", 4000, 0.08, 300);
+        bpce.display();
+    }
+}

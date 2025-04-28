@@ -1,0 +1,54 @@
+class Employee {
+    String firstName, lastName;
+
+    Employee(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    void display() {
+        System.out.println("Employee: " + firstName + " " + lastName);
+    }
+}
+
+class HourlyEmployee extends Employee {
+    private double wage;
+    private double hours;
+
+    HourlyEmployee(String firstName, String lastName, double wage, double hours) {
+        super(firstName, lastName);
+        setWage(wage);
+        setHours(hours);
+    }
+
+    void setWage(double wage) {
+        if (wage >= 0) this.wage = wage;
+        else this.wage = 0;
+    }
+
+    void setHours(double hours) {
+        if (hours >= 0 && hours <= 168) this.hours = hours; 
+        else this.hours = 0;
+    }
+
+    double earnings() {
+        if (hours <= 40) {
+            return wage * hours;
+        } else {
+            return (40 * wage) + ((hours - 40) * wage * 1.5);
+        }
+    }
+
+    void display() {
+        super.display();
+        System.out.println("Wage: $" + wage + ", Hours: " + hours);
+        System.out.println("Earnings: $" + earnings());
+    }
+}
+
+public class EmployeeTest1 {
+    public static void main(String[] args) {
+        HourlyEmployee emp = new HourlyEmployee("Alice", "Brown", 20, 45);
+        emp.display();
+    }
+}

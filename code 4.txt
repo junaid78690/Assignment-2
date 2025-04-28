@@ -1,0 +1,114 @@
+
+class Shape {
+    String name;
+    
+    void display() {
+        System.out.println("Shape: " + name);
+    }
+}
+
+
+class TwoDimensionalShape extends Shape {
+    double area() {
+        return 0; 
+    }
+}
+
+// Subclass for 3D shapes
+class ThreeDimensionalShape extends Shape {
+    double area() {
+        return 0;
+    }
+    
+    double volume() {
+        return 0;
+    }
+}
+
+// Circle subclass
+class Circle extends TwoDimensionalShape {
+    double radius;
+    
+    Circle(double r) {
+        name = "Circle";
+        radius = r;
+    }
+    
+    double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+
+class Square extends TwoDimensionalShape {
+    double side;
+    
+    Square(double s) {
+        name = "Square";
+        side = s;
+    }
+    
+    double area() {
+        return side * side;
+    }
+}
+
+
+class Sphere extends ThreeDimensionalShape {
+    double radius;
+    
+    Sphere(double r) {
+        name = "Sphere";
+        radius = r;
+    }
+    
+    double area() {
+        return 4 * Math.PI * radius * radius;
+    }
+    
+    double volume() {
+        return (4.0 / 3) * Math.PI * radius * radius * radius;
+    }
+}
+
+
+class Cube extends ThreeDimensionalShape {
+    double side;
+    
+    Cube(double s) {
+        name = "Cube";
+        side = s;
+    }
+    
+    double area() {
+        return 6 * side * side;
+    }
+    
+    double volume() {
+        return side * side * side;
+    }
+}
+
+
+public class ShapeHierarchy {
+    public static void main(String[] args) {
+        Circle circle = new Circle(5);
+        Square square = new Square(4);
+        Sphere sphere = new Sphere(3);
+        Cube cube = new Cube(2);
+
+        circle.display();
+        System.out.println("Area: " + circle.area());
+
+        square.display();
+        System.out.println("Area: " + square.area());
+
+        sphere.display();
+        System.out.println("Surface Area: " + sphere.area());
+        System.out.println("Volume: " + sphere.volume());
+
+        cube.display();
+        System.out.println("Surface Area: " + cube.area());
+        System.out.println("Volume: " + cube.volume());
+    }
+}
